@@ -1,8 +1,9 @@
-//
-//  String.ext.swift
-//  HW7
-//
-//  Created by Павел Градов on 20.04.2024.
-//
-
 import Foundation
+
+extension String {
+    
+    static let appWhite = "appWhite"
+    static let appGreen = "appGreen"
+    static let white = "systemWhite"
+    static let black = "systemBlack"
+}
