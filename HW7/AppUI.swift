@@ -39,13 +39,15 @@ final class AppUI {
     
     static func createButton() -> UIButton {
         
-        .config(view: UIButton(primaryAction: UIAction(handler: { _ in
+        {
+            .config(view: $0) { btn in
+                btn.backgroundColor = UIColor(named: String.appGreen)
+                btn.setTitle("Next", for: .normal)
+                btn.setTitleColor(UIColor(named: String.white), for: .normal)
+                btn.layer.cornerRadius = 20
+            }
+        }(UIButton(primaryAction: UIAction(handler: { _ in
             print("tap-tap")
-        }))) { btn in
-            btn.backgroundColor = UIColor(named: String.appGreen)
-            btn.setTitle("Next", for: .normal)
-            btn.setTitleColor(UIColor(named: String.white), for: .normal)
-            btn.layer.cornerRadius = 20
-        }
+        })))
     }
 }

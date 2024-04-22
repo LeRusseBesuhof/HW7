@@ -9,6 +9,8 @@ final class ProfileCellTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private lazy var constrArray = [NSLayoutConstraint]()
 
     private lazy var mainView : UIView = AppUI.createBackgroundView()
     
@@ -27,6 +29,7 @@ final class ProfileCellTableViewCell: UITableViewCell {
     func setUpCell(model: Profile) {
         
         selectionStyle = .none
+        contentView.backgroundColor = .clear
         
         mainImage.image = UIImage(named: model.mainImage)
         
@@ -41,12 +44,12 @@ final class ProfileCellTableViewCell: UITableViewCell {
         addSubview(mainView)
         [mainImage, header, descr, button].forEach { mainView.addSubview($0) }
         [profilePicture, profileLabel].forEach { mainImage.addSubview($0) }
-
+        
         NSLayoutConstraint.activate([
             mainView.leadingAnchor.constraint(equalTo: leadingAnchor),
             mainView.topAnchor.constraint(equalTo: topAnchor),
             mainView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            mainView.bottomAnchor.constraint(equalTo: button.bottomAnchor, constant: 40),
+            mainView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -22),
             
             mainImage.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 20),
             mainImage.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 20),
@@ -73,11 +76,10 @@ final class ProfileCellTableViewCell: UITableViewCell {
             descr.widthAnchor.constraint(equalTo: mainImage.widthAnchor),
             
             button.leadingAnchor.constraint(equalTo: descr.leadingAnchor),
-            button.topAnchor.constraint(equalTo: descr.bottomAnchor, constant: 30),
+            button.topAnchor.constraint(equalTo: descr.bottomAnchor, constant: 26),
             button.widthAnchor.constraint(equalTo: descr.widthAnchor),
             button.heightAnchor.constraint(equalToConstant: 50),
-            
-            bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: 20)
+            button.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -20),
         ])
     }
 }
